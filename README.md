@@ -8,7 +8,7 @@ How to use
 
 After building the following commands are available
 
-DenonCMD <hostname> <command>
+    DenonCMD <hostname> <command>
 
 hostname is the IP or hostname of your Denon AVR
 command can be one of the following:
