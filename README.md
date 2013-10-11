@@ -8,7 +8,7 @@ How to use
 
 After building the following commands are available
 
-    DenonCMD <hostname> <command>
+    DenonCMD <hostname> <command> [command...]
 
 hostname is the IP or hostname of your Denon AVR
 command can be one of the following:
@@ -35,6 +35,17 @@ command can be one of the following:
    selects the next tuner preset
  * tunerPresetDown
    selects the previous tuner preset
+ * netPlayPause
+   pauses and plays the current track in network input
+ * netPrevTrack
+   plays next track on network input
+ * netNextTrack
+   play previous track on network input
+
+You can send multiple commands in one by adding them to the command line. So if you want to increase the volume by 2 in one command and your receiver
+normaly increases volume by 0.5 with one command, just issue
+
+    DenonCMD <hostname> volUp volUp volUp volUp
 
 Additional Information
 ----------------------

@@ -50,6 +50,9 @@ namespace DenonCMD
                             postParamCollection.Add(new PostParam("cmd0", "PutMasterVolumeBtn/<"));
                             break;
 
+                        case "inputTuner":
+                            postParamCollection.Add(new PostParam("cmd0", "PutZone_InputFunction/TUNER"));
+                            break;
                         case "tunerPresetUp":
                             getCollection.Add("/goform/formiPhoneAppTuner.xml?1+PRESETUP");
                             break;
@@ -57,9 +60,15 @@ namespace DenonCMD
                             getCollection.Add("/goform/formiPhoneAppTuner.xml?1+PRESETDOWN");
                             break;
 
-                        case "inputTuner":
-                            postParamCollection.Add(new PostParam("cmd0", "PutZone_InputFunction/TUNER"));
+                        case "netPlayPause":
+                            postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurEnter"));
                             break;
+                        case "netNextTrack":
+                            postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurDown"));
+                            break;
+                        case "netPrevTrack":
+                            postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurUp"));
+                            break;                            
 
                         default:
                             break;
