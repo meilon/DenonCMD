@@ -21,57 +21,84 @@ namespace DenonCMD
 
                 for (int i = 1; i < args.Length; i++)
                 {
-                    switch (args[i])
+                    //ability to set the volume to the chosen value
+                    //e.g. volume-40 sets the volume to -40db
+                    if(s.Contains("volume")){
+                    getCollection.Add("/goform/formiPhoneAppVolume.xml?1+" + s.Substring(6,3));
+                    }
+                    else
                     {
-                        case "powerOn":
-                            postParamCollection.Add(new PostParam("cmd0", "PutZone_OnOff/ON"));
-                            break;
-                        case "powerOff":
-                            postParamCollection.Add(new PostParam("cmd0", "PutZone_OnOff/OFF"));
-                            break;
-                        case "power":
-                            postParamCollection.Add(switchPower(hostname));
-                            break;
+                        switch (args[i])
+                        {
+                            case "powerOn":
+                                postParamCollection.Add(new PostParam("cmd0", "PutZone_OnOff/ON"));
+                                break;
+                            case "powerOff":
+                                postParamCollection.Add(new PostParam("cmd0", "PutZone_OnOff/OFF"));
+                                break;
+                            case "power":
+                                postParamCollection.Add(switchPower(hostname));
+                                break;
 
-                        case "muteOn":
-                            postParamCollection.Add(new PostParam("cmd0", "PutVolumeMute/on"));
-                            break;
-                        case "muteOff":
-                            postParamCollection.Add(new PostParam("cmd0", "PutVolumeMute/off"));
-                            break;
-                        case "mute":
-                            postParamCollection.Add(switchMute(hostname));
-                            break;
+                            case "muteOn":
+                                postParamCollection.Add(new PostParam("cmd0", "PutVolumeMute/on"));
+                                break;
+                            case "muteOff":
+                                postParamCollection.Add(new PostParam("cmd0", "PutVolumeMute/off"));
+                                break;
+                            case "mute":
+                                postParamCollection.Add(switchMute(hostname));
+                                break;
 
-                        case "volUp":
-                            postParamCollection.Add(new PostParam("cmd0", "PutMasterVolumeBtn/>"));
-                            break;
-                        case "volDown":
-                            postParamCollection.Add(new PostParam("cmd0", "PutMasterVolumeBtn/<"));
-                            break;
+                            case "volUp":
+                                postParamCollection.Add(new PostParam("cmd0", "PutMasterVolumeBtn/>"));
+                                break;
+                            case "volDown":
+                                postParamCollection.Add(new PostParam("cmd0", "PutMasterVolumeBtn/<"));
+                                break;
+                            
+                            case "inputGame":
+                                getCollection.Add("/goform/formiPhoneAppDirect.xml?SIGAME");
+                                break;
+                            case "inputCD":
+                                getCollection.Add("/goform/formiPhoneAppDirect.xml?SICD");
+                                break;
+                            case "inputDVD":
+                                getCollection.Add("/goform/formiPhoneAppDirect.xml?SIDVD");
+                                break;
+                            case "inputBluRay":
+                                getCollection.Add("/goform/formiPhoneAppDirect.xml?SIBD");
+                                break;
+                            case "inputSatCbl":
+                                getCollection.Add("/goform/formiPhoneAppDirect.xml?SISAT/CBL");
+                                break;
+                            case "inputMediaPlayer":
+                                getCollection.Add("/goform/formiPhoneAppDirect.xml?SIMPLAY");
+                                break;
 
-                        case "inputTuner":
-                            postParamCollection.Add(new PostParam("cmd0", "PutZone_InputFunction/TUNER"));
-                            break;
-                        case "tunerPresetUp":
-                            getCollection.Add("/goform/formiPhoneAppTuner.xml?1+PRESETUP");
-                            break;
-                        case "tunerPresetDown":
-                            getCollection.Add("/goform/formiPhoneAppTuner.xml?1+PRESETDOWN");
-                            break;
+                            case "inputTuner":
+                                postParamCollection.Add(new PostParam("cmd0", "PutZone_InputFunction/TUNER"));
+                                break;
+                            case "tunerPresetUp":
+                                getCollection.Add("/goform/formiPhoneAppTuner.xml?1+PRESETUP");
+                                break;
+                            case "tunerPresetDown":
+                                getCollection.Add("/goform/formiPhoneAppTuner.xml?1+PRESETDOWN");
+                                break;
 
-                        case "netPlayPause":
-                            postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurEnter"));
-                            break;
-                        case "netNextTrack":
-                            postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurDown"));
-                            break;
-                        case "netPrevTrack":
-                            postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurUp"));
-                            break;                            
+                            case "netPlayPause":
+                                postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurEnter"));
+                                break;
+                            case "netNextTrack":
+                                postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurDown"));
+                                break;
+                            case "netPrevTrack":
+                                postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurUp"));
+                                break;                            
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 try
@@ -92,6 +119,7 @@ namespace DenonCMD
                         {
                             wrGETURL = WebRequest.Create("http://" + hostname + call);
                             wrGETURL.GetResponse();
+                            wrGETURL.Abort();
                         }
                     }
                 }
