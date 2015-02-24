@@ -29,6 +29,8 @@ command can be one of the following:
    increases the volume
  * volDown
    decreases the volume
+ * vol-x
+   set volume to -x *dB*
  * inputTuner
    sets "Tuner" as the current input
  * tunerPresetUp

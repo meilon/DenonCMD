@@ -23,8 +23,9 @@ namespace DenonCMD
                 {
                     //ability to set the volume to the chosen value
                     //e.g. volume-40 sets the volume to -40db
-                    if(s.Contains("volume")){
-                    getCollection.Add("/goform/formiPhoneAppVolume.xml?1+" + s.Substring(6,3));
+                    if (args[i].Contains("vol-"))
+                    {
+                        getCollection.Add("/goform/formiPhoneAppVolume.xml?1+" + args[i].Substring(3));
                     }
                     else
                     {
