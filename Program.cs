@@ -22,7 +22,7 @@ namespace DenonCMD
                 for (int i = 1; i < args.Length; i++)
                 {
                     //ability to set the volume to the chosen value
-                    //e.g. volume-40 sets the volume to -40db
+                    //e.g. vol-40 sets the volume to -40db
                     if (args[i].Contains("vol-"))
                     {
                         getCollection.Add("/goform/formiPhoneAppVolume.xml?1+" + args[i].Substring(3));
@@ -95,7 +95,32 @@ namespace DenonCMD
                                 break;
                             case "netPrevTrack":
                                 postParamCollection.Add(new PostParam("cmd0", "PutNetAudioCommand/CurUp"));
-                                break;                            
+                                break;
+
+                            case "modeMovie":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/MOVIE"));
+                                break;
+                            case "modeMusic":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/MUSIC"));
+                                break;
+                            case "modeGame":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/GAME"));
+                                break;
+                            case "modePure":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/PURE DIRECT"));
+                                break;
+                            case "modeDirect":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/DIRECT"));
+                                break;
+                            case "modeStereo":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/STEREO"));
+                                break;
+                            case "modeStandard":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/STANDARD"));
+                                break;
+                            case "modeSimulation":
+                                postParamCollection.Add(new PostParam("cmd0", "PutSurroundMode/SIMULATION"));
+                                break;
 
                             default:
                                 break;
